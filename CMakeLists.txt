@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.8)
 project(DZ1)
 
 set(CMAKE_C_STANDARD 11)
@@ -26,7 +26,7 @@ if (EN_TESTS)
     target_link_libraries(test_main.out pthread)
 endif ()
 
-if (VALGRIND_EN)
+if (EN_VALGRIND)
     message("Valgrind enabled")
     find_program(VALGRIND valgrind REQUIRED)
 
