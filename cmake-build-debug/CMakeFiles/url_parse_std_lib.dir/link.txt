@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc liburl_parse_std_lib.a  CMakeFiles/url_parse_std_lib.dir/src/main.c.o CMakeFiles/url_parse_std_lib.dir/src/test_main.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib liburl_parse_std_lib.a

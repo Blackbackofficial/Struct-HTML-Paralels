@@ -98,6 +98,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles /Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/progress.marks
@@ -131,44 +142,87 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DZ1
+# Target rules for targets named test_main.out
 
 # Build rule for target.
-DZ1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 DZ1
-.PHONY : DZ1
+test_main.out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_main.out
+.PHONY : test_main.out
 
 # fast build rule for target.
-DZ1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DZ1.dir/build.make CMakeFiles/DZ1.dir/build
-.PHONY : DZ1/fast
+test_main.out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_main.out.dir/build.make CMakeFiles/test_main.out.dir/build
+.PHONY : test_main.out/fast
 
-main.o: main.c.o
+#=============================================================================
+# Target rules for targets named url_parse_std_lib
 
-.PHONY : main.o
+# Build rule for target.
+url_parse_std_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 url_parse_std_lib
+.PHONY : url_parse_std_lib
+
+# fast build rule for target.
+url_parse_std_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/build
+.PHONY : url_parse_std_lib/fast
+
+src/main.o: src/main.c.o
+
+.PHONY : src/main.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DZ1.dir/build.make CMakeFiles/DZ1.dir/main.c.o
-.PHONY : main.c.o
+src/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/src/main.c.o
+.PHONY : src/main.c.o
 
-main.i: main.c.i
+src/main.i: src/main.c.i
 
-.PHONY : main.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DZ1.dir/build.make CMakeFiles/DZ1.dir/main.c.i
-.PHONY : main.c.i
+src/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/src/main.c.i
+.PHONY : src/main.c.i
 
-main.s: main.c.s
+src/main.s: src/main.c.s
 
-.PHONY : main.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DZ1.dir/build.make CMakeFiles/DZ1.dir/main.c.s
-.PHONY : main.c.s
+src/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/src/main.c.s
+.PHONY : src/main.c.s
+
+src/test_main.o: src/test_main.cpp.o
+
+.PHONY : src/test_main.o
+
+# target to build an object file
+src/test_main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_main.out.dir/build.make CMakeFiles/test_main.out.dir/src/test_main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/src/test_main.cpp.o
+.PHONY : src/test_main.cpp.o
+
+src/test_main.i: src/test_main.cpp.i
+
+.PHONY : src/test_main.i
+
+# target to preprocess a source file
+src/test_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_main.out.dir/build.make CMakeFiles/test_main.out.dir/src/test_main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/src/test_main.cpp.i
+.PHONY : src/test_main.cpp.i
+
+src/test_main.s: src/test_main.cpp.s
+
+.PHONY : src/test_main.s
+
+# target to generate assembly for a file
+src/test_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_main.out.dir/build.make CMakeFiles/test_main.out.dir/src/test_main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/src/test_main.cpp.s
+.PHONY : src/test_main.cpp.s
 
 # Help Target
 help:
@@ -178,10 +232,15 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... DZ1"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... test"
+	@echo "... test_main.out"
+	@echo "... url_parse_std_lib"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/test_main.o"
+	@echo "... src/test_main.i"
+	@echo "... src/test_main.s"
 .PHONY : help
 
 

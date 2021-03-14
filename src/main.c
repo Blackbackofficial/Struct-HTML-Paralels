@@ -4,31 +4,25 @@
  * текстовую строку с одним тегом. На выход функция должна возвращать указатель на инициализированную структуру.
  */
 
-#include "stdio.h"
-#include "stdlib.h"
-#include "string.h"
-#include "ctype.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
 
-#define SIZE 32
-#define SIZE_VALUE 1024
-
-typedef struct html_tag {
-    char name[SIZE];
-    char value[SIZE_VALUE];
-} html;
-
-void correct_name(const char * string, int count) {
+int correct_name(const char * string, int count) {
     if (string[count] != ' ') {
         for (int i = 0; string[count] != ' ' && string[count] != '=' && string[count] != '>'; ++i) {
             if (!isalpha(string[count])) {
                 printf("Incorrect name tag or name attribute\n");
-                exit(0);
+                return EXIT_FAILURE;
             } count++;
         }
     } else {
         printf("Incorrect name tag\n");
-        exit(0);
+        return EXIT_FAILURE;
     }
+    return EXIT_SUCCESS;
 }
 
 html * html_decoder(const char * string) {
@@ -42,13 +36,18 @@ html * html_decoder(const char * string) {
 
     if (string[count] !='<') {
         printf("String is null or incorrect\n");
-        exit(0);
+        strcpy(tag_ptr->name, "0"); return tag_ptr;
     }
 
-    if (string[count+1] != '/')
-        correct_name(string, count+1);
-    else
-        correct_name(string, count+2);
+    if (string[count+1] != '/') {
+        if (correct_name(string, count + 1)) {
+            strcpy(tag_ptr->name, "0"); return tag_ptr;
+        }
+    } else {
+        if (correct_name(string, count + 2)) {
+            strcpy(tag_ptr->name, "0"); return tag_ptr;
+        }
+    }
 
     for (int j = 0, flag = 0; string[count] != ' ' && string[count] != '>' && string[count] != '\0'; ++count) {
         if (!flag) {
@@ -71,7 +70,7 @@ html * html_decoder(const char * string) {
     while (string[count] != '>') {
         if (string[SIZE_VALUE-2] != '\0'){
             printf("Incorrect string format or crowded > SIZE_VALUE\n");
-            exit(0);
+            strcpy(tag_ptr->name, "0"); return tag_ptr;
         }
 
         memset(data, '\0', SIZE);
@@ -84,7 +83,10 @@ html * html_decoder(const char * string) {
         while (string[count] == ' ')
             count++;
 
-        correct_name(string, count);
+        if (correct_name(string, count)) {
+            strcpy(tag_ptr[0].name, "0"); return tag_ptr;
+        }
+
         for (int w = 0; string[count] != ' ' && (string[count] != '=' && string[count] != '>'); ++w)
             data[w] = string[count++];
 
@@ -96,7 +98,7 @@ html * html_decoder(const char * string) {
                 count++;
 
             if (string[++count] == '/') {
-                for (int r = 0; string[count] != ' '; ++r)
+                for (int r = 0; string[count] != ' ' && string[count] != '>'; ++r)
                     value[r] = string[count++]; // проверка в случае action=/search
             } else {
                 count++;
@@ -113,16 +115,12 @@ html * html_decoder(const char * string) {
     return tag_ptr;
 }
 
-int main() {
-    char str[SIZE_VALUE];
+int start() {
+    char str[SIZE_VALUE]; // если нужно будет ввести с клавиатуры
     fgets(str, SIZE_VALUE, stdin);
     fflush(stdin);
     html * i;
     i = html_decoder(str);
-    for (int j = 0; j < 8; j++) { // укажем какое-то коллличество
-        printf("%s\n", "-------------");
-        printf("%s\n",i[j].name);
-        printf("%s\n",i[j].value);
-    }
+    free(i);
     return 0;
 }
