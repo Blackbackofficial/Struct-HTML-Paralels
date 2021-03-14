@@ -21,7 +21,7 @@ TEST(TEST_HTML_TAG, start_tag) {
         GTEST_FAIL() << " Wrong answer";
     if (strcmp(tag[2].value, "js-add-answer-component post-form") != 0)
         GTEST_FAIL() << "Wrong answer";
-    free(tag);
+//    free(tag);
 }
 
 // проверка на пробелл перед тегом (такой тег не валиден)
@@ -111,12 +111,10 @@ TEST(TEST_HTML_TAG,  spechial_attr_tag) {
         GTEST_FAIL() << "Wrong answer";
     if (strcmp(tag[0].value, "open") != 0)
         GTEST_FAIL() << "Wrong answer";
-    tag++;
     if (strcmp(tag[1].name, "action") != 0)
         GTEST_FAIL() << "Wrong answer";
     if (strcmp(tag[1].value, "/search") != 0)
         GTEST_FAIL() << "Wrong answer";
-    tag++;
     if (strcmp(tag[2].name, "class") != 0)
         GTEST_FAIL() << "Wrong answer";
     if (strcmp(tag[2].value, "post-form") != 0)

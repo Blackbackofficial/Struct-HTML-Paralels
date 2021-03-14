@@ -12,7 +12,7 @@
 
 int correct_name(const char * string, int count) {
     if (string[count] != ' ') {
-        for (int i = 0; string[count] != ' ' && string[count] != '=' && string[count] != '>'; ++i) {
+        for (int i = 0; i < count && string[count] != ' ' && string[count] != '=' && string[count] != '>'; ++i) {
             if (!isalpha(string[count])) {
                 printf("Incorrect name tag or name attribute\n");
                 return EXIT_FAILURE;
