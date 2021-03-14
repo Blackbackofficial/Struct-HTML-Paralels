@@ -120,7 +120,8 @@ html * html_decoder(const char * string) {
         strcpy(new_tag[size_tag-1].name, data);
         strcpy(new_tag[size_tag-1].value, value);
         tag_ptr = new_tag;
-        free(new_tag);
+        for (int i = 0; i < size_tag; i++)
+            free(new_tag - i);
     }
     return tag_ptr;
 }
