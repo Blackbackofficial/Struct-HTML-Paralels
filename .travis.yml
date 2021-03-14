@@ -20,7 +20,7 @@ compiler:
 script:
   - mkdir build
   - cd build
-  - cmake .. -DENABLE_TESTS=ON -DENABLE_STATIC_CHECK=ON
+  - cmake .. -DEN_TESTS=ON
   - make
   #- make test
   - ctest -VV -t memcheck

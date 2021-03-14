@@ -7,11 +7,11 @@ C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk  
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src -I/usr/local/include 
+C_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src 
 
 CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src -I/usr/local/include 
+CXX_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src 
 

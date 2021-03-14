@@ -12,7 +12,6 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../src"
-  "/usr/local/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/ivanchernov/CLionProjects/DZ1/src/test_main.cpp" "/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/url_parse_std_lib.dir/src/test_main.cpp.o"
@@ -22,7 +21,6 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src"
-  "/usr/local/include"
   )
 
 # Targets to which this target links.
