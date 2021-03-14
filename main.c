@@ -23,8 +23,7 @@ void correct_name(const char * string, int count) {
             if (!isalpha(string[count])) {
                 printf("Incorrect name tag or name attribute\n");
                 exit(0);
-            }
-            count++;
+            } count++;
         }
     } else {
         printf("Incorrect name tag\n");
@@ -33,44 +32,43 @@ void correct_name(const char * string, int count) {
 }
 
 html * html_decoder(const char * str_tag) {
-    int size_tag = 1;
-    int str_ptr = 0;
+    int size_tag = 1; int count = 0;
     html * tag_ptr = calloc(size_tag, sizeof(html));
     char data[SIZE] = {'\0'};
     char value[SIZE_VALUE] = {'\0'};
 
-    while (str_tag[str_ptr] == ' ')
-        str_ptr++;
+    while (str_tag[count] == ' ')
+        count++;
 
-    if (str_tag[str_ptr] !='<') {
+    if (str_tag[count] !='<') {
         printf("String is null or incorrect\n");
         exit(0);
     }
-    if (str_tag[str_ptr+1] != '/')
-        correct_name(str_tag, str_ptr+1);
-    else
-        correct_name(str_tag, str_ptr+2);
 
-    for (int j = 0, flag = 0; str_tag[str_ptr] != ' ' && str_tag[str_ptr] != '>' && str_tag[str_ptr] != '\0'; ++str_ptr) {
-        if (str_tag[str_ptr] == '<' && !flag) {
+    if (str_tag[count+1] != '/')
+        correct_name(str_tag, count+1);
+    else
+        correct_name(str_tag, count+2);
+
+    for (int j = 0, flag = 0; str_tag[count] != ' ' && str_tag[count] != '>' && str_tag[count] != '\0'; ++count) {
+        if (!flag) {
             flag = 1;
-            if (str_tag[str_ptr+1] == '/') {
-                strcpy(value, "close"); str_ptr++;
+            if (str_tag[count+1] == '/') {
+                strcpy(value, "close"); count++;
             } else
                 strcpy(value, "open");
             continue;
         }
-        if (flag)
-            data[j++] = str_tag[str_ptr];
+        data[j++] = str_tag[count];
     }
 
     strcpy(tag_ptr->name, data);
     strcpy(tag_ptr->value, value);
 
-    if (tag_ptr[0].value[0] == 'c' || str_tag[str_ptr] == '>' || tag_ptr[0].value[0] == '\0')
+    if (tag_ptr[0].value[0] == 'c' || str_tag[count] == '>' || tag_ptr[0].value[0] == '\0')
         return tag_ptr;
 
-    while (str_tag[str_ptr] != '>') {
+    while (str_tag[count] != '>') {
         if (str_tag[SIZE_VALUE-2] != '\0'){
             printf("Incorrect string format or crowded > SIZE_VALUE\n");
             exit(0);
@@ -83,34 +81,33 @@ html * html_decoder(const char * str_tag) {
         for (int j = 0; j < size_tag; ++j)
             new_tag[j] = tag_ptr[j];
 
-        while (str_tag[str_ptr] == ' ')
-            str_ptr++;
+        while (str_tag[count] == ' ')
+            count++;
 
-        correct_name(str_tag, str_ptr);
-        for (int w = 0; (str_tag[str_ptr] != ' ') && (str_tag[str_ptr] != '=' && str_tag[str_ptr] != '>'); ++w)
-            data[w] = str_tag[str_ptr++];
+        correct_name(str_tag, count);
+        for (int w = 0; str_tag[count] != ' ' && (str_tag[count] != '=' && str_tag[count] != '>'); ++w)
+            data[w] = str_tag[count++];
 
-        while (str_tag[str_ptr] == ' ')
-            str_ptr++;
+        while (str_tag[count] == ' ')
+            count++;
 
-        if (str_tag[str_ptr] == '=' || str_tag[str_ptr] == '/') {
-            while (str_tag[str_ptr+1] == ' ')
-                str_ptr++;
+        if (str_tag[count] == '=' || str_tag[count] == '/') {
+            while (str_tag[count+1] == ' ')
+                count++;
 
-            if (str_tag[++str_ptr] == '/') {
-                for (int r = 0; str_tag[str_ptr] != ' '; ++r) {
-                    value[r] = str_tag[str_ptr++];
-                } // проверка в случае action=/search
+            if (str_tag[++count] == '/') {
+                for (int r = 0; str_tag[count] != ' '; ++r)
+                    value[r] = str_tag[count++]; // проверка в случае action=/search
             } else {
-                str_ptr++;
-                for (int w = 0; str_tag[str_ptr] != '\"'; ++w)
-                    value[w] = str_tag[str_ptr++];
+                count++;
+                for (int w = 0; str_tag[count] != '\"'; ++w)
+                    value[w] = str_tag[count++];
             }
-            str_ptr++;
+            count++;
         }
         strcpy(new_tag[size_tag-1].name, data);
         strcpy(new_tag[size_tag-1].value, value);
-        tag_ptr  = new_tag;
+        tag_ptr = new_tag;
     }
     return tag_ptr;
 }
