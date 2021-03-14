@@ -8,5 +8,11 @@
 
 /Users/ivanchernov/CLionProjects/DZ1/main.c
 stdio.h
--
+/Users/ivanchernov/CLionProjects/DZ1/stdio.h
+stdlib.h
+/Users/ivanchernov/CLionProjects/DZ1/stdlib.h
+string.h
+/Users/ivanchernov/CLionProjects/DZ1/string.h
+ctype.h
+/Users/ivanchernov/CLionProjects/DZ1/ctype.h
 
