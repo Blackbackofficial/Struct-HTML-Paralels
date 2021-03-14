@@ -2,11 +2,14 @@ language: c
 
 os: linux
 
+addons:
+  apt:
+    packages:
+      - valgrind
+      - lcov
+
 before_install:
   - sudo apt update
-  - sudo apt install cppcheck
-  - sudo apt install valgrind
-
 
 compiler:
   - gcc
@@ -16,7 +19,13 @@ compiler:
 script:
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake .. -DENABLE_TESTS=ON -DENABLE_STATIC_CHECK=ON
   - make
-  - cppcheck --quiet --error-exitcode=1 .
-  - valgrind --leak-check=full ./*
+  #- make test
+  - ctest -VV -t memcheck
+
+after_success:
+  - lcov --capture --directory . --output-file coverage.info
+  - lcov --remove coverage.info '/usr/*' --output-file coverage.info
+  - lcov --list coverage.info
+  - bash <(curl -s https://codecov.io/bash) -f coverage.info

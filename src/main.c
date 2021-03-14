@@ -27,7 +27,12 @@ int correct_name(const char * string, int count) {
 
 html * html_decoder(const char * string) {
     int size_tag = 1; int count = 0;
-    html * tag_ptr = calloc(size_tag, sizeof(html));
+    html * tag_ptr = (html*) calloc(size_tag, sizeof(html));
+    if (NULL == tag_ptr) {
+        printf("Allocation problem\n");
+        return 0;
+    }
+
     char data[SIZE] = {'\0'};
     char value[SIZE_VALUE] = {'\0'};
 
@@ -68,7 +73,7 @@ html * html_decoder(const char * string) {
         return tag_ptr;
 
     while (string[count] != '>') {
-        if (string[SIZE_VALUE-2] != '\0'){
+        if (string[SIZE_VALUE-2] != '\0') {
             printf("Incorrect string format or crowded > SIZE_VALUE\n");
             strcpy(tag_ptr->name, "0"); return tag_ptr;
         }
@@ -77,6 +82,11 @@ html * html_decoder(const char * string) {
         memset(value, '\0', SIZE_VALUE);
 
         html *new_tag = calloc(++size_tag, sizeof(html));
+        if (NULL == new_tag) {
+            printf("Allocation problem\n");
+            return 0;
+        }
+
         for (int j = 0; j < size_tag; ++j)
             new_tag[j] = tag_ptr[j];
 
