@@ -24,8 +24,7 @@ TEST(TEST_HTML_TAG, start_tag) {
     if (strcmp(tag->value, "js-add-answer-component post-form") != 0)
         GTEST_FAIL() << "Wrong answer";
     tag++;
-    if (strcmp(tag->value, "") != 0)
-        GTEST_FAIL() << "Bad alloc";
+    free(tag);
 }
 
 // проверка на пробелл перед тегом (такой тег не валиден)
