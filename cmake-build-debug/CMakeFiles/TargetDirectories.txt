@@ -1,3 +1,5 @@
 /Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/test_main.out.dir
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/test.dir
 /Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/url_parse_std_lib.dir

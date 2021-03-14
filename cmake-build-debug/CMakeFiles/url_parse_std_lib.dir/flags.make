@@ -3,15 +3,15 @@
 
 # compile C with /Library/Developer/CommandLineTools/usr/bin/cc
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
-C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk   -std=gnu11
+C_FLAGS = --coverage -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src 
+C_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src -I/usr/local/include 
 
-CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk   -std=gnu++11
+CXX_FLAGS = --coverage -std=c++0x -Wall -Wextra -Werror --pedantic -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src 
+CXX_INCLUDES = -I/Users/ivanchernov/CLionProjects/DZ1/src -I/usr/local/include 
 

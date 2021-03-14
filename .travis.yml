@@ -8,22 +8,40 @@ addons:
       - valgrind
       - lcov
 
-before_install:
-  - sudo apt update
 
 compiler:
   - gcc
   - clang
 
+install:
+  - sudo apt-get update
+  - sudo apt-get install valgrind
+  - sudo apt-get install clang-format
+  - sudo apt-get install lcov
+  - sudo apt-get install libstdc++6
+  - sudo apt-get install cmake
+  # Google tests
+  - sudo apt-get install libgtest-dev
+  - cd /usr/src/gtest
+  - sudo cmake .
+  - sudo make
+  - sudo cp *.a /usr/lib
+  - cd -
+
+before_script:
+  - cd project/String
+  - clang-format -i -style=Google *.h *.cpp *.c
+  - cd -
+  - cd project/QueryInfo
+  - clang-format -i -style=Google *.h *.cpp *.c
 
 
 script:
-  - mkdir build
-  - cd build
-  - cmake .. -DEN_TESTS=ON
-  - make
-  #- make test
-  - ctest -VV -t memcheck
+  - cmake .
+  - make || travis_terminate 1
+  - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./test_main.out || travis_terminate 1
+
+
 
 after_success:
   - lcov --capture --directory . --output-file coverage.info
