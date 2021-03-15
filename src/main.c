@@ -89,7 +89,7 @@ html * html_decoder(const char * string) {
             return 0;
         }
 
-        memcpy(new_tag, tag_ptr, (size_tag - 1) * sizeof(html));
+        memmove(new_tag, tag_ptr, (size_tag - 1) * sizeof(html));
 //        free(tag_ptr);
         while (string[count] == ' ')
             count++;
@@ -120,7 +120,7 @@ html * html_decoder(const char * string) {
         }
         strcpy(new_tag[size_tag-1].name, data);
         strcpy(new_tag[size_tag-1].value, value);
-        memcpy(tag_ptr, new_tag, (size_tag) * sizeof(html));
+        memmove(tag_ptr, new_tag, (size_tag) * sizeof(html));
         free(new_tag);
     }
     return tag_ptr;
