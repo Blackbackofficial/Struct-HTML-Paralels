@@ -54,23 +54,23 @@ html * html_decoder(const char * string) {
         }
     }
 
-//    for (int j = 0, flag = 0; string[count] != ' ' && string[count] != '>' && string[count] != '\0'; ++count) {
-//        if (!flag) {
-//            flag = 1;
-//            if (string[count+1] == '/') {
-//                strcpy(value, "close"); count++;
-//            } else
-//                strcpy(value, "open");
-//            continue;
-//        }
-//        data[j++] = string[count];
-//    }
+    for (int j = 0, flag = 0; string[count] != ' ' && string[count] != '>' && string[count] != '\0'; ++count) {
+        if (!flag) {
+            flag = 1;
+            if (string[count+1] == '/') {
+                strcpy(value, "close"); count++;
+            } else
+                strcpy(value, "open");
+            continue;
+        }
+        data[j++] = string[count];
+    }
+
+    strcpy(tag_ptr->name, data);
+    strcpy(tag_ptr->value, value);
 //
-//    strcpy(tag_ptr->name, data);
-//    strcpy(tag_ptr->value, value);
-//
-//    if (tag_ptr[0].value[0] == 'c' || string[count] == '>' || tag_ptr[0].value[0] == '\0')
-//        return tag_ptr;
+    if (tag_ptr[0].value[0] == 'c' || string[count] == '>' || tag_ptr[0].value[0] == '\0')
+        return tag_ptr;
 //
 //    while (string[count] != '>') {
 ////        if (string[SIZE_VALUE-2] != '\0') {
