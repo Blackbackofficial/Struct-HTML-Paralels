@@ -81,20 +81,20 @@ html * html_decoder(const char * string) {
         memset(data, '\0', SIZE);
         memset(value, '\0', SIZE_VALUE);
 
-        html *new_tag = calloc(++size_tag, sizeof(html));
+        html *new_tag = (html*) calloc(++size_tag, sizeof(html));
         if (NULL == new_tag) {
             printf("Allocation problem\n");
+            free(tag_ptr);
             return 0;
         }
 
-        for (int j = 0; j < size_tag; ++j)
-            new_tag[j] = tag_ptr[j];
-
+        memcpy(new_tag, tag_ptr, (size_tag - 1) * sizeof(html));
+//        free(tag_ptr);
         while (string[count] == ' ')
             count++;
 
         if (correct_name(string, count)) {
-            strcpy(tag_ptr[0].name, "0"); return tag_ptr;
+            strcpy(new_tag[0].name, "0"); return new_tag;
         }
 
         for (int w = 0; string[count] != ' ' && (string[count] != '=' && string[count] != '>'); ++w)
@@ -119,8 +119,8 @@ html * html_decoder(const char * string) {
         }
         strcpy(new_tag[size_tag-1].name, data);
         strcpy(new_tag[size_tag-1].value, value);
-        tag_ptr = new_tag;
-//        free(new_tag);
+        memcpy(tag_ptr, new_tag, (size_tag) * sizeof(html));
+        free(new_tag);
     }
     return tag_ptr;
 }
