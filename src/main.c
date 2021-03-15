@@ -26,7 +26,7 @@ int correct_name(const char * string, int count) {
 }
 
 html * html_decoder(const char * string) {
-    int size_tag = 1; int count = 0;
+    size_t size_tag = 1; int count = 0;
     html * tag_ptr = (html*) calloc(size_tag, sizeof(html));
     if (NULL == tag_ptr) {
         printf("Allocation problem\n");
