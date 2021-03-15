@@ -41,33 +41,34 @@ html * html_decoder(const char * string) {
 
     if (string[count] !='<') {
         printf("String is null or incorrect\n");
-        strcpy(tag_ptr->name, "0"); return tag_ptr;
+        strcpy(tag_ptr->name, "0\0"); return tag_ptr;
     }
 
     if (string[count+1] != '/') {
         if (correct_name(string, count + 1)) {
-            strcpy(tag_ptr->name, "0"); return tag_ptr;
+            strcpy(tag_ptr->name, "0\0"); return tag_ptr;
         }
     } else {
         if (correct_name(string, count + 2)) {
-            strcpy(tag_ptr->name, "0"); return tag_ptr;
+            strcpy(tag_ptr->name, "0\0"); return tag_ptr;
         }
     }
-
-    for (int j = 0, flag = 0; string[count] != ' ' && string[count] != '>' && string[count] != '\0'; ++count) {
+    int j = 0;
+    for (int flag = 0; string[count] != ' ' && string[count] != '>' && string[count] != '\0'; ++count) {
         if (!flag) {
             flag = 1;
             if (string[count+1] == '/') {
-                strcpy(value, "close"); count++;
+                strcpy(tag_ptr->value, "close\0"); count++;
             } else
-                strcpy(value, "open");
+                strcpy(tag_ptr->value, "open\0");
             continue;
         }
         data[j++] = string[count];
     }
 
     strcpy(tag_ptr->name, data);
-    strcpy(tag_ptr->value, value);
+    tag_ptr->name[j] = '\0';
+
 
     if (tag_ptr[0].value[0] == 'c' || string[count] == '>' || tag_ptr[0].value[0] == '\0')
         return tag_ptr;
