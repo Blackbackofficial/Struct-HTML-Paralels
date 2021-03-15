@@ -21,7 +21,10 @@ TEST(TEST_HTML_TAG, start_tag) {
         GTEST_FAIL() << " Wrong answer";
     if (strcmp(tag[2].value, "js-add-answer-component post-form") != 0)
         GTEST_FAIL() << "Wrong answer";
-//    free(tag);
+    int q = 0;
+    while (q < 3) {
+        free(tag + q); q++;
+    }
 }
 
 // проверка на пробелл перед тегом (такой тег не валиден)
