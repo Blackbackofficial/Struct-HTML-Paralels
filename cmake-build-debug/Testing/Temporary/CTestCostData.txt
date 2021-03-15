@@ -1,4 +1,5 @@
 AllGood 0 0
 OneArg 0 0
 FileNotFound 0 0
+test_main.out 2 0.00366061
 ---
