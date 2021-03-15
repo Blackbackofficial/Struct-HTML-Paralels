@@ -68,60 +68,60 @@ html * html_decoder(const char * string) {
 
     strcpy(tag_ptr->name, data);
     strcpy(tag_ptr->value, value);
-//
+
     if (tag_ptr[0].value[0] == 'c' || string[count] == '>' || tag_ptr[0].value[0] == '\0')
         return tag_ptr;
-//
-//    while (string[count] != '>') {
-////        if (string[SIZE_VALUE-2] != '\0') {
-////            printf("Incorrect string format or crowded > SIZE_VALUE\n");
-////            strcpy(tag_ptr->name, "0"); return tag_ptr;
-////        }
-//
-//        memset(data, '\0', SIZE);
-//        memset(value, '\0', SIZE_VALUE);
-//
-//        html *new_tag = calloc(++size_tag, sizeof(html));
-//        if (NULL == new_tag) {
-//            printf("Allocation problem\n");
-//            return 0;
+
+    while (string[count] != '>') {
+//        if (string[SIZE_VALUE-2] != '\0') {
+//            printf("Incorrect string format or crowded > SIZE_VALUE\n");
+//            strcpy(tag_ptr->name, "0"); return tag_ptr;
 //        }
-//
-//        for (int j = 0; j < size_tag; ++j)
-//            new_tag[j] = tag_ptr[j];
-//
-//        while (string[count] == ' ')
-//            count++;
-//
-//        if (correct_name(string, count)) {
-//            strcpy(tag_ptr[0].name, "0"); return tag_ptr;
-//        }
-//
-//        for (int w = 0; string[count] != ' ' && (string[count] != '=' && string[count] != '>'); ++w)
-//            data[w] = string[count++];
-//
-//        while (string[count] == ' ')
-//            count++;
-//
-//        if (string[count] == '=' || string[count] == '/') {
-//            while (string[count+1] == ' ')
-//                count++;
-//
-//            if (string[++count] == '/') {
-//                for (int r = 0; string[count] != ' ' && string[count] != '>'; ++r)
-//                    value[r] = string[count++]; // проверка в случае action=/search
-//            } else {
-//                count++;
-//                for (int w = 0; string[count] != '\"'; ++w)
-//                    value[w] = string[count++];
-//            }
-//            count++;
-//        }
-//        strcpy(new_tag[size_tag-1].name, data);
-//        strcpy(new_tag[size_tag-1].value, value);
-//        tag_ptr = new_tag;
-//        free(new_tag);
-//    }
+
+        memset(data, '\0', SIZE);
+        memset(value, '\0', SIZE_VALUE);
+
+        html *new_tag = calloc(++size_tag, sizeof(html));
+        if (NULL == new_tag) {
+            printf("Allocation problem\n");
+            return 0;
+        }
+
+        for (int j = 0; j < size_tag; ++j)
+            new_tag[j] = tag_ptr[j];
+
+        while (string[count] == ' ')
+            count++;
+
+        if (correct_name(string, count)) {
+            strcpy(tag_ptr[0].name, "0"); return tag_ptr;
+        }
+
+        for (int w = 0; string[count] != ' ' && (string[count] != '=' && string[count] != '>'); ++w)
+            data[w] = string[count++];
+
+        while (string[count] == ' ')
+            count++;
+
+        if (string[count] == '=' || string[count] == '/') {
+            while (string[count+1] == ' ')
+                count++;
+
+            if (string[++count] == '/') {
+                for (int r = 0; string[count] != ' ' && string[count] != '>'; ++r)
+                    value[r] = string[count++]; // проверка в случае action=/search
+            } else {
+                count++;
+                for (int w = 0; string[count] != '\"'; ++w)
+                    value[w] = string[count++];
+            }
+            count++;
+        }
+        strcpy(new_tag[size_tag-1].name, data);
+        strcpy(new_tag[size_tag-1].value, value);
+        tag_ptr = new_tag;
+        free(new_tag);
+    }
     return tag_ptr;
 }
 
