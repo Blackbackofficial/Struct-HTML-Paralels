@@ -26,3 +26,5 @@ target_link_libraries(test_main.out url_parse_std_lib)
 # links gtest
 target_link_libraries(test_main.out ${GTEST_LIBRARIES})
 target_link_libraries(test_main.out pthread)
+
+add_test(test_main.out test_main.out)
