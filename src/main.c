@@ -115,7 +115,7 @@ html * html_decoder(const char * string) {
         }
         strcpy(new_tag[size_tag-1].name, data);
         strcpy(new_tag[size_tag-1].value, value);
-        memcpy(tag_ptr, new_tag, (size_tag) * sizeof(html));
+        memcpy(tag_ptr, new_tag, (size_tag + 1) * sizeof(html));
         free(new_tag);
     }
     return tag_ptr;
