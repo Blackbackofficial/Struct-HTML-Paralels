@@ -21,6 +21,7 @@ TEST(TEST_HTML_TAG, start_tag) {
         GTEST_FAIL() << " Wrong answer";
     if (strcmp(tag[2].value, "js-add-answer-component post-form") != 0)
         GTEST_FAIL() << "Wrong answer";
+    free(tag);
 }
 
 // проверка на пробелл перед тегом (такой тег не валиден)
@@ -30,6 +31,7 @@ TEST(TEST_HTML_TAG, error_start_tag) {
     if (strcmp(tag->name, "0") != 0)
         GTEST_FAIL() << "Incorrect name tag";
     EXPECT_EQ(tag->name[0], '0');
+    free(tag);
 }
 
 // проверка на то что он закрывающий (close) и в name не хранит символ "/"
@@ -40,6 +42,7 @@ TEST(TEST_HTML_TAG, close_tag) {
         GTEST_FAIL() << " Wrong answer";
     if (strcmp(tag->value, "close") != 0)
         GTEST_FAIL() << "Wrong answer";
+    free(tag);
 }
 // проверка на отступ после "/" в случае закрывающего тега
 TEST(TEST_HTML_TAG, error_close_tag) {
@@ -48,6 +51,7 @@ TEST(TEST_HTML_TAG, error_close_tag) {
     if (strcmp(tag->name, "0") != 0)
         GTEST_FAIL() << "Incorrect name tag";
     EXPECT_EQ(tag->name[0], '0');
+    free(tag);
 }
 
 // проверка на правильный нейминг атрибутов тега, никаких символов (только в value атрибута)
@@ -57,6 +61,7 @@ TEST(TEST_HTML_TAG, error_attribute_tag) {
     if (strcmp(tag->name, "0") != 0)
         GTEST_FAIL() << "Incorrect name tag";
     EXPECT_EQ(tag->name[0], '0');
+    free(tag);
 }
 
 // проверка на то как он читает пробеллы (дышащий тег)
@@ -71,8 +76,7 @@ TEST(TEST_HTML_TAG, spaces_in_tag) {
         GTEST_FAIL() << "Wrong answer";
     if (strcmp(tag[1].value, " /questions/511196/answer/submit ") != 0)
         GTEST_FAIL() << "Wrong answer";
-    if (strcmp(tag[2].value, "") != 0)
-        GTEST_FAIL() << "Bad alloc";
+    free(tag);
 }
 
 // проверка на то что тег содержит "<"
@@ -91,6 +95,7 @@ TEST(TEST_HTML_TAG,  error_end_str_tag) {
     if (strcmp(tag->name, "0") != 0)
         GTEST_FAIL() << "Incorrect name tag";
     EXPECT_EQ(tag->name[0], '0');
+    free(tag);
 }
 
 // проверка на то что он пустой
@@ -100,6 +105,7 @@ TEST(TEST_HTML_TAG,  null_str_tag) {
     if (strcmp(tag->name, "0") != 0)
         GTEST_FAIL() << "IS NULL";
     EXPECT_EQ(tag->name[0], '0');
+    free(tag);
 }
 
 // Есть особая форма атрибута без кавычек (action=/search) и не такое бывает
@@ -118,6 +124,7 @@ TEST(TEST_HTML_TAG,  spechial_attr_tag) {
         GTEST_FAIL() << "Wrong answer";
     if (strcmp(tag[2].value, "post-form") != 0)
         GTEST_FAIL() << "Wrong answer";
+    free(tag);
 }
 
 int main(int argc, char** argv) {
