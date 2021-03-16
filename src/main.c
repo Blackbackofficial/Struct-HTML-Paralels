@@ -74,11 +74,6 @@ html * html_decoder(const char * string) {
         return tag_ptr;
 
     while (string[count] != '>') {
-//        if (string[SIZE_VALUE-2] != '\0') {
-//            printf("Incorrect string format or crowded > SIZE_VALUE\n");
-//            strcpy(tag_ptr->name, "0"); return tag_ptr;
-//        }
-
         memset(data, '\0', SIZE);
         memset(value, '\0', SIZE_VALUE);
 
@@ -90,7 +85,7 @@ html * html_decoder(const char * string) {
         }
 
         memcpy(new_tag, tag_ptr, (size_tag - 1) * sizeof(html));
-//        free(tag_ptr);
+
         while (string[count] == ' ')
             count++;
 
