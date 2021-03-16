@@ -6,3 +6,4 @@
 
 
 [![Build Status](https://travis-ci.com/Blackblackofficial/struct_html.svg?branch=hw-1)](https://travis-ci.com/Blackblackofficial/struct_html)
+[![codecov](https://codecov.io/gh/Blackblackofficial/struct_html/branch/hw-1/graph/badge.svg?token=gy3WneDO92)](https://codecov.io/gh/Blackblackofficial/struct_html)
