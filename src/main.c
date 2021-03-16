@@ -84,7 +84,7 @@ html * html_decoder(const char * string) {
             return 0;
         }
 
-        memcpy(new_tag, tag_ptr, (size_tag - 1) * sizeof(html));
+        memcpy(new_tag, tag_ptr, (size_tag) * sizeof(html));
 
         while (string[count] == ' ')
             count++;
