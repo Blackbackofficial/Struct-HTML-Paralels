@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++0x -Wall -Wextra -Werror --pedanti
 
 include_directories(src)
 
-set(LIB_SOURCE_FILES src/main.c src/test_main.cpp)
+set(LIB_SOURCE_FILES src/html.c src/test_html.cpp)
 
 add_library(url_parse_std_lib STATIC ${LIB_SOURCE_FILES})
 
@@ -21,10 +21,10 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # html tag
-add_executable(test_main.out src/test_main.cpp)
-target_link_libraries(test_main.out url_parse_std_lib)
+add_executable(test_html.out src/test_html.cpp)
+target_link_libraries(test_html.out url_parse_std_lib)
 # links gtest
-target_link_libraries(test_main.out ${GTEST_LIBRARIES})
-target_link_libraries(test_main.out pthread)
+target_link_libraries(test_html.out ${GTEST_LIBRARIES})
+target_link_libraries(test_html.out pthread)
 
-add_test(test_main.out test_main.out)
+add_test(test_html.out test_html.out)
