@@ -35,7 +35,7 @@ int main() {
         printf("No file");
         exit(0);
     }
-    char *buffer= (char *) calloc(FILESIZE, sizeof(char));
+    char * buffer = (char *) calloc(FILESIZE, sizeof(char));
     fgets(buffer, FILESIZE, mf);
     fclose(mf);
 
