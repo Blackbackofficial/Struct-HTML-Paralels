@@ -1,8 +1,11 @@
-# struct_html
+# Processes algo
 
-Создать структуру для хранения информации об HTML-теге: его имени, признаке ?открывающий/закрывающий? и
-атрибутах тега. Составить с ее использованием программу, включающую в себя функцию, принимающую на вход
-текстовую строку с одним тегом. На выход функция должна возвращать указатель на инициализированную структуру.
+###Вариант #23
+Сравните и выведите в консоль время работы последовательного и параллельного с использованием 
+нескольких процессов алгоритмов, каждый из которых выделяет в динамической памяти символьный массив 
+размером 100 Мб и, рассматривая его содержимое как абстрактную переписку, определяет 
+эмоциональную окраску последней. Переписка считается оптимистичной, если диграфов :) в ней больше, 
+чем диграфов :(; в противном случае переписка признается пессимистичной.
 
-[![Build Status](https://travis-ci.com/Blackblackofficial/Struct-HTML.svg?branch=hw-1)](https://travis-ci.com/Blackblackofficial/Struct-HTML)
-[![codecov](https://codecov.io/gh/Blackblackofficial/struct_html/branch/hw-1/graph/badge.svg?token=gy3WneDO92)](https://codecov.io/gh/Blackblackofficial/struct_html)
+[comment]: <> ([![Build Status]&#40;https://travis-ci.com/Blackblackofficial/Struct-HTML.svg?branch=hw-1&#41;]&#40;https://travis-ci.com/Blackblackofficial/Struct-HTML&#41;)
+[comment]: <> ([![codecov]&#40;https://codecov.io/gh/Blackblackofficial/struct_html/branch/hw-1/graph/badge.svg?token=gy3WneDO92&#41;]&#40;https://codecov.io/gh/Blackblackofficial/struct_html&#41;)

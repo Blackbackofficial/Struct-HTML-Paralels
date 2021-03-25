@@ -10,21 +10,21 @@ set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++0x -Wall -Wextra -Werror --pedanti
 
 include_directories(src)
 
-set(LIB_SOURCE_FILES src/html.c src/test_html.cpp)
-
+set(LIB_SOURCE_FILES src/main.c src/trivial/trivial.h  src/trivial/trivial.c)
+add_executable(main.out src/main.c) # потом убрать
 add_library(url_parse_std_lib STATIC ${LIB_SOURCE_FILES})
 
-# sets GTEST_INCLUDE_DIRS and GTEST_LIBRARIES
-enable_testing()
-find_package(GTest REQUIRED)
-# adds the gtest include directory
-include_directories(${GTEST_INCLUDE_DIRS})
-
-# html tag
-add_executable(test_html.out src/test_html.cpp)
-target_link_libraries(test_html.out url_parse_std_lib)
-# links gtest
-target_link_libraries(test_html.out ${GTEST_LIBRARIES})
-target_link_libraries(test_html.out pthread)
-
-add_test(test_html.out test_html.out)
+## sets GTEST_INCLUDE_DIRS and GTEST_LIBRARIES
+#enable_testing()
+#find_package(GTest REQUIRED)
+## adds the gtest include directory
+#include_directories(${GTEST_INCLUDE_DIRS})
+#
+## html tag
+#add_executable(test_html.out src/test_html.cpp)
+target_link_libraries(main.out url_parse_std_lib)
+## links gtest
+#target_link_libraries(main.out ${GTEST_LIBRARIES})
+#target_link_libraries(main.out pthread)
+##
+#add_test(test_html.out test_html.out)
