@@ -26,9 +26,9 @@ install:
   - sudo cp *.a /usr/lib
   - cd -
 
-before_script:
-  - cd src
-  - clang-format -i -style=Google *.h *.cpp *.c
+#before_script:
+#  - cd src
+#  - clang-format -i -style=Google *.h *.cpp *.c
 
 script:
   - cmake ..
