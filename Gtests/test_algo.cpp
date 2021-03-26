@@ -1,51 +1,57 @@
 #include <gtest/gtest.h>
-#include <string>
 
 extern "C" {
-    #include "trivial/trivial.h"
+    #include "trivial.h"
 }
 
+class Trivial_algo : public ::testing::Test {
+protected:
+//    virtual void SetUp(void) {
+//        // настройка перед запуском очередного теста
+//    }
+//    virtual void TearDown(void) {
+//        // очистка после прогона очередного теста
+//    }
+
+    const char *buffer{};
+};
+
 // только позитивные
-TEST(Trivial_algo, only_positive) {
+TEST_F(Trivial_algo, only_positive) {
     int emotional_color;
-    char buffer[] = {":):):):)"};
+    buffer = ":):):):)";
     trivial_emotional_color(buffer, &emotional_color);
     ASSERT_EQ(emotional_color, POSITIVE);
 }
 
 // только негативные
-TEST(Trivial_algo, only_negative) {
+TEST_F(Trivial_algo, only_negative) {
     int emotional_color;
-    char buffer[] = {":(:(:(:("};
+    buffer = ":(:(:(:(";
     trivial_emotional_color(buffer, &emotional_color);
     ASSERT_EQ(emotional_color, NEGATIVE);
 }
 
 // вперемешку позитивные
-TEST(Trivial_algo, dirty_negative) {
+TEST_F(Trivial_algo, dirty_negative) {
     int emotional_color;
-    char buffer[] = {"n:(go:)yw:)dt:)wi:("};
+    buffer = "n:(go:)yw:)dt:)wi:(";
     trivial_emotional_color(buffer, &emotional_color);
     ASSERT_EQ(emotional_color, POSITIVE);
 }
 
 // вперемешку, нейтральные
-TEST(Trivial_algo, dirty_neutral) {
+TEST_F(Trivial_algo, dirty_neutral) {
     int emotional_color;
-    char buffer[] = {":):)go:)yw:(dt:(wi:("};
+    buffer = ":):)go:)yw:(dt:(wi:(";
     trivial_emotional_color(buffer, &emotional_color);
     ASSERT_EQ(emotional_color, NEUTRAL);
 }
 
 // вперемешку, нейтральные
-TEST(Trivial_algo, empty_neutral) {
+TEST_F(Trivial_algo, empty_neutral) {
     int emotional_color;
-    char buffer[] = {""};
+    buffer = "";
     trivial_emotional_color(buffer, &emotional_color);
     ASSERT_EQ(emotional_color, NEUTRAL);
-}
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }

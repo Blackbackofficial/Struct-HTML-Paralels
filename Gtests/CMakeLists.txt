@@ -1,22 +1,20 @@
-include_directories("${PROJECT_SOURCE_DIR}/include")
+include_directories("${PROJECT_SOURCE_DIR}/src/trivial")
 
-file(GLOB tests "${PROJECT_SOURCE_DIR}/test/*.cpp")
-list(REMOVE_ITEM tests "${PROJECT_SOURCE_DIR}/test/main.cpp")
+file(GLOB tests "${PROJECT_SOURCE_DIR}/Gtests/*.cpp")
+list(REMOVE_ITEM tests "${PROJECT_SOURCE_DIR}/Gtests/main.cpp")
 
-if (ENABLE_GCOV)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage -fprofile-arcs")
-endif ()
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage -fprofile-arcs")
 
 foreach (file ${tests})
     set(name)
     get_filename_component(name ${file} NAME_WE)
     add_executable("${name}_tests"
             ${file}
-            "${PROJECT_SOURCE_DIR}/test/main.cpp"
+            "${PROJECT_SOURCE_DIR}/Gtests/main.cpp"
             )
     target_link_libraries("${name}_tests"
-            libmoodfinder_s
+            libtest_algo
             gtest_main
             )
     add_test(NAME ${name}
