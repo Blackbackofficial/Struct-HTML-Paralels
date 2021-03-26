@@ -43,9 +43,11 @@ int main() {
     clock_t begin = clock();
     trivial_emotional_color(buffer, &emotional_color);
     clock_t end = clock();
+
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("Эмоциональная окраска %s\n", emotional_color == POSITIVE ? "позитивная" : (emotional_color == NEGATIVE  ? "негативная" : "нейтральная"));
     printf("Время последовательного алгоритма: %f\n", time_spent);
+
     free(buffer);
     return 0;
 }

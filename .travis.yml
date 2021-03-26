@@ -27,13 +27,13 @@ install:
   - cd -
 
 before_script:
-  - cd src
+  - cd Gtests
 #  - clang-format -i -style=Google *.h *.cpp *.c
 
 script:
   - cmake ..
   - make || travis_terminate 1
-  - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./main.out || travis_terminate 1
+  - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./test_algo.out || travis_terminate 1
 
 
 after_success:
