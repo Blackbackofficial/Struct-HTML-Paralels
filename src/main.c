@@ -40,21 +40,23 @@ int main() {
     fgets(buffer, FILESIZE, mf);
     fclose(mf);
 
-    int emotional_color;
+    int emotional_color_t, emotional_color_p;
     clock_t begin = clock();
-    trivial_emotional_color(buffer, &emotional_color);
+    trivial_emotional_color(buffer, &emotional_color_t);
     clock_t end = clock();
 
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Эмоциональная окраска %s\n", emotional_color == POSITIVE ? "позитивная" : (emotional_color == NEGATIVE  ? "негативная" : "нейтральная"));
-    printf("Время последовательного алгоритма: %f\n", time_spent);
+    printf("Consistent algorithm time: %f\n", time_spent);
 
     begin = clock();
-    parallel_emotional_color(buffer, &emotional_color);
+    parallel_emotional_color(buffer, &emotional_color_p);
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Эмоциональная окраска %s\n", emotional_color == POSITIVE ? "позитивная" : (emotional_color == NEGATIVE  ? "негативная" : "нейтральная"));
-    printf("Время последовательного алгоритма: %f\n", time_spent);
+    printf("Parallel algorithm time: %f\n", time_spent);
+    if (emotional_color_t == emotional_color_p)
+        printf("Emotional coloring %s\n", emotional_color_t == POSITIVE ? "positive" : (emotional_color_t == NEGATIVE  ? "negative" : "neutral"));
+    else
+        printf("The emotional coloring of algorithms is different");
 
     free(buffer);
     return 0;

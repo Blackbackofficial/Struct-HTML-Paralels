@@ -7,5 +7,5 @@
 эмоциональную окраску последней. Переписка считается оптимистичной, если диграфов :) в ней больше, 
 чем диграфов :(; в противном случае переписка признается пессимистичной.
 
-[![Build Status](https://travis-ci.com/Blackblackofficial/Struct-HTML.svg?branch=hw-2)](https://travis-ci.com/Blackblackofficial/Struct-HTML)
+[![Build Status](https://travis-ci.com/Blackblackofficial/Struct-HTML-Paralels.svg?branch=hw-2)](https://travis-ci.com/Blackblackofficial/Struct-HTML-Paralels)
 [![codecov](https://codecov.io/gh/Blackblackofficial/Struct-HTML/branch/hw-2/graph/badge.svg?token=gy3WneDO92)](https://codecov.io/gh/Blackblackofficial/Struct-HTML)

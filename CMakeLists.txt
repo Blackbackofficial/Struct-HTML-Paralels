@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage -fprofile-arcs")
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${EXTRA_BINCFLAGS})
 
+
 include(configure_test.cmake)
 add_subdirectory(Gtests)
 include(configure_cppcheck.cmake)
@@ -19,7 +20,7 @@ set(libtest_algo_sources
         ${PROJECT_SOURCE_DIR}/src/main.c
         )
 
-#include_directories("${PROJECT_SOURCE_DIR}/src/trivial")
+include_directories("${PROJECT_SOURCE_DIR}/src/trivial")
 include_directories("${PROJECT_SOURCE_DIR}/src/parallel")
 
 add_library(libtest_algo STATIC ${libtest_algo_sources})
