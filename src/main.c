@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "trivial/trivial.h"
+#include "parallel/parallel.h"
 
 struct smile_render {
     char smile[3];
@@ -45,6 +46,13 @@ int main() {
     clock_t end = clock();
 
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Эмоциональная окраска %s\n", emotional_color == POSITIVE ? "позитивная" : (emotional_color == NEGATIVE  ? "негативная" : "нейтральная"));
+    printf("Время последовательного алгоритма: %f\n", time_spent);
+
+    begin = clock();
+    parallel_emotional_color(buffer, &emotional_color);
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("Эмоциональная окраска %s\n", emotional_color == POSITIVE ? "позитивная" : (emotional_color == NEGATIVE  ? "негативная" : "нейтральная"));
     printf("Время последовательного алгоритма: %f\n", time_spent);
 
