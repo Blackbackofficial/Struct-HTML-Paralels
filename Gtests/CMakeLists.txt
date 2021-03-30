@@ -1,4 +1,5 @@
 include_directories("${PROJECT_SOURCE_DIR}/src/trivial")
+include_directories("${PROJECT_SOURCE_DIR}/src/parallel")
 
 file(GLOB tests "${PROJECT_SOURCE_DIR}/Gtests/*.cpp")
 list(REMOVE_ITEM tests "${PROJECT_SOURCE_DIR}/Gtests/main.cpp")

@@ -11,7 +11,7 @@
 #define NEGATIVE 1
 #define NEUTRAL 2
 
-void trivial_emotional_color(const char * buffer, int * emotional_color);
+void trivial_emotional_color(const char * buffer, int * emotional_color, int size);
 
 #endif //DZ1_MAIN_H
 

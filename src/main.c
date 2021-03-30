@@ -41,18 +41,19 @@ int main() {
     fclose(mf);
 
     int emotional_color_t, emotional_color_p;
-    clock_t begin = clock();
-    trivial_emotional_color(buffer, &emotional_color_t);
-    clock_t end = clock();
 
+    clock_t begin = clock();
+    trivial_emotional_color(buffer, &emotional_color_t, FILESIZE);
+    clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("Consistent algorithm time: %f\n", time_spent);
 
     begin = clock();
-    parallel_emotional_color(buffer, &emotional_color_p);
+    parallel_emotional_color(buffer, &emotional_color_p, FILESIZE);
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("Parallel algorithm time: %f\n", time_spent);
+
     if (emotional_color_t == emotional_color_p)
         printf("Emotional coloring %s\n", emotional_color_t == POSITIVE ? "positive" : (emotional_color_t == NEGATIVE  ? "negative" : "neutral"));
     else

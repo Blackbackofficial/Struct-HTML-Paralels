@@ -2,20 +2,17 @@
 #include "trivial/trivial.h"
 
 void count_smile(const char * buffer, size_t start, size_t end, int * sum) {
-    int like = 0;
     for (int i = start; i < FILESIZE-1 && i < end && buffer[i] != '\0'; i++) {
         if (buffer[i+1] == '(')
-            like--;
+            (*sum)--;
         if (buffer[i+1] == ')')
-            like++;
+            (*sum)++;
     }
-    *sum = like;
 }
 
 FD_P * del_new_description(FD_P * pipes, int count) {
     for (int i = 0; i < count; ++i) {
-        close(pipes->fd[i][0]);
-        close(pipes->fd[i][1]);
+        close(*pipes->fd[i]);
         free(pipes->fd[i]);
     }
     free(pipes->fd);
@@ -31,7 +28,7 @@ FD_P * new_pipes(int process) {
     if (pipes == NULL)
         return NULL;
 
-    pipes->fd = (int **) malloc(process * sizeof(int *));
+    pipes->fd = (int *) malloc(process * sizeof(int *));
     if (pipes->fd == NULL) {
         free(pipes);
         return NULL;
@@ -48,8 +45,8 @@ FD_P * new_pipes(int process) {
     return pipes;
 }
 
-void parallel_emotional_color(const char * buffer, int * emotional_color) {
-    int process = (int) sysconf(_SC_NPROCESSORS_ONLN);
+void parallel_emotional_color(const char * buffer, int * emotional_color, int size) {
+    size_t process = sysconf(_SC_NPROCESSORS_ONLN);
     if (process < 0) {
         printf("Забрал всю память");
         exit(EXIT_FAILURE);
@@ -60,7 +57,7 @@ void parallel_emotional_color(const char * buffer, int * emotional_color) {
         printf("Не выделились pipes");
         exit(EXIT_FAILURE);
     }
-    size_t part = (size_t) (FILESIZE / process);
+    size_t part = (size_t) (size / process);
 
     for (int i = 0; i < process; i++) {
         size_t pid = fork();
