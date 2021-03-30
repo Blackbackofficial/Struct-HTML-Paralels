@@ -24,6 +24,7 @@ include_directories("${PROJECT_SOURCE_DIR}/src/trivial")
 include_directories("${PROJECT_SOURCE_DIR}/src/parallel")
 
 add_library(libtest_algo STATIC ${libtest_algo_sources})
+add_library(libDtest_algo SHARED ${libtest_algo_sources})
 
 set(main_sources
         ${PROJECT_SOURCE_DIR}/src/main.c
@@ -32,4 +33,5 @@ set(main_sources
         )
 
 add_executable(main ${main_sources})
-target_link_libraries(main libtest_algo)
+target_link_libraries(main libtest_algo libDtest_algo)
+target_link_libraries(main ${CMAKE_DL_LIBS} libDtest_algo)

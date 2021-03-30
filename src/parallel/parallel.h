@@ -1,7 +1,5 @@
 #include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "trivial.h"
 
 
 #ifndef DZ1_P_H

@@ -1,8 +1,9 @@
 #include "parallel.h"
-#include "trivial/trivial.h"
 
 void count_smile(const char * buffer, size_t start, size_t end, int * sum) {
-    for (int i = start; i < FILESIZE-1 && i < end && buffer[i] != '\0'; i++) {
+    for (int i = start; i < FILESIZE - 1 && i < end && buffer[i] != '\0'; i++) {
+        while (buffer[i] != ':' && buffer[i+1] != '\0')
+            i++;
         if (buffer[i+1] == '(')
             (*sum)--;
         if (buffer[i+1] == ')')
@@ -15,7 +16,7 @@ FD_P * del_new_description(FD_P * pipes, int count) {
         close(*pipes->fd[i]);
         free(pipes->fd[i]);
     }
-    free(pipes->fd);
+    if (pipes != NULL) free(pipes->fd);
     free(pipes);
     return NULL;
 }
@@ -28,7 +29,7 @@ FD_P * new_pipes(int process) {
     if (pipes == NULL)
         return NULL;
 
-    pipes->fd = (int *) malloc(process * sizeof(int *));
+    pipes->fd = malloc(process * sizeof(int *));
     if (pipes->fd == NULL) {
         free(pipes);
         return NULL;

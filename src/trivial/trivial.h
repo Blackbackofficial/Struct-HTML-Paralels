@@ -1,6 +1,6 @@
-#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 
 #ifndef DZ1_MAIN_H
@@ -14,4 +14,3 @@
 void trivial_emotional_color(const char * buffer, int * emotional_color, int size);
 
 #endif //DZ1_MAIN_H
-

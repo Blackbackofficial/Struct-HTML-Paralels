@@ -93,8 +93,23 @@ TEST(PARALLEL_ALGO, p_like_color) {
 
 // подсчет нейтральной эмоциональной окраски
 TEST(PARALLEL_ALGO, p_neutral_color) {
-    int emotional_color;
-    const char buffer[15] = "):):):):(:(:(:";
-    parallel_emotional_color(buffer, &emotional_color, 15);
+    int emotional_color = 0;
+    const char buffer[86] = "e:)wewdewdwewewe:(fhwjhe2";
+    parallel_emotional_color(buffer, &emotional_color, 86);
     ASSERT_EQ(emotional_color, NEUTRAL);
+}
+
+// проверка на создание и очистки
+TEST(PARALLEL_ALGO, p_new_del_pipes) {
+    size_t process = sysconf(_SC_NPROCESSORS_ONLN);
+    FD_P * pipes = new_pipes(process);
+    ASSERT_EQ((long) del_new_description(pipes, process), NULL);
+}
+
+// если процессов свободных нет
+TEST(PARALLEL_ALGO, p_null_color) {
+    int process = 0;
+    FD_P * pipes = new_pipes(process);
+    ASSERT_EQ((long) pipes, NULL);
+    del_new_description(pipes, process);
 }
