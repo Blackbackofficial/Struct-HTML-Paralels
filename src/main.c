@@ -37,23 +37,36 @@ int main() {
     fgets(buffer, FILESIZE, mf);
     fclose(mf);
 
+    // последовательная реализация
     int color_t, color_p;
-
     clock_t begin = clock();
     trivial_emotional_color(buffer, &color_t, FILESIZE);
     clock_t end = clock();
     double time_spent = (double) (end - begin) / CLOCKS_PER_SEC;
     printf("Consistent algorithm time: %f\n", time_spent);
 
+    // распараллеленная реализация c динамической библиотекой
+    void * handle;
+    handle = dlopen ("libDinlib_algo.so", RTLD_LAZY);
+    if (!handle) {
+        fputs(dlerror(), stderr);
+        exit(EXIT_FAILURE);
+    }
+
+    void (*parallel)(void (*par)(void), const char * buffer, int * emotional_color, int size);
+    parallel = dlsym(handle, "parallel_emotional_color");
+
     begin = clock();
-    parallel_emotional_color(buffer, &color_p, FILESIZE);
+    parallel((void (*)(void)) parallel_emotional_color, buffer, &color_p, FILESIZE);
     end = clock();
     time_spent = (double) (end - begin) / CLOCKS_PER_SEC;
     printf("Parallel algorithm time: %f\n", time_spent);
 
+
     if (color_t == color_p) printf("Emotional color %s\n", color_t == POSITIVE ? "positive" : (color_t == NEGATIVE  ? "negative" : "neutral"));
     else printf("The emotional coloring of algorithms is different");
 
+    dlclose(handle);
     free(buffer);
     return 0;
 }

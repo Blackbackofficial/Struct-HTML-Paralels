@@ -51,7 +51,7 @@ TEST(PARALLEL_ALGO, p_like) {
     size_t start = 0;
     size_t end = 8;
     int sum = 0;
-    count_smile(buffer, start, end, &sum);
+    count_smile((void (*)()) count_smile, buffer, start, end, &sum);
     ASSERT_EQ(sum, 4);
 }
 
@@ -61,7 +61,7 @@ TEST(PARALLEL_ALGO, p_dislike) {
     size_t start = 0;
     size_t end = 8;
     int sum = 0;
-    count_smile(buffer, start, end, &sum);
+    count_smile((void (*)()) count_smile, buffer, start, end, &sum);
     ASSERT_EQ(sum, -4);
 }
 
@@ -71,7 +71,7 @@ TEST(PARALLEL_ALGO, p_like_rage) {
     size_t start = 3;
     size_t end = 8;
     int sum = 0;
-    count_smile(buffer, start, end, &sum);
+    count_smile((void (*)()) count_smile, buffer, start, end, &sum);
     ASSERT_EQ(sum, 2);
 }
 
@@ -79,7 +79,7 @@ TEST(PARALLEL_ALGO, p_like_rage) {
 TEST(PARALLEL_ALGO, p_dislike_color) {
     int emotional_color;
     const char buffer[17] = ":(:(:(:(:(:(:(:(";
-    parallel_emotional_color(buffer, &emotional_color, 17);
+    parallel_emotional_color((void (*)()) parallel_emotional_color, buffer, &emotional_color, 17);
     ASSERT_EQ(emotional_color, NEGATIVE);
 }
 
@@ -87,7 +87,7 @@ TEST(PARALLEL_ALGO, p_dislike_color) {
 TEST(PARALLEL_ALGO, p_like_color) {
     int emotional_color;
     const char buffer[17] = ":):):):):):):):)";
-    parallel_emotional_color(buffer, &emotional_color, 17);
+    parallel_emotional_color((void (*)()) parallel_emotional_color, buffer, &emotional_color, 17);
     ASSERT_EQ(emotional_color, POSITIVE);
 }
 
@@ -95,7 +95,7 @@ TEST(PARALLEL_ALGO, p_like_color) {
 TEST(PARALLEL_ALGO, p_neutral_color) {
     int emotional_color = 0;
     const char buffer[86] = "e:)wewdewdwewewe:(fhwjhe2";
-    parallel_emotional_color(buffer, &emotional_color, 86);
+    parallel_emotional_color((void (*)()) parallel_emotional_color, buffer, &emotional_color, 86);
     ASSERT_EQ(emotional_color, NEUTRAL);
 }
 

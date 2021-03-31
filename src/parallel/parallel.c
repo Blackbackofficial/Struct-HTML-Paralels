@@ -1,6 +1,9 @@
 #include "parallel.h"
 
-void count_smile(const char * buffer, size_t start, size_t end, int * sum) {
+void count_smile(void (*par)(void), const char * buffer, size_t start, size_t end, int * sum) {
+    if (par == NULL || buffer == NULL)
+        exit(EXIT_FAILURE);
+
     for (int i = start; i < FILESIZE - 1 && i < end && buffer[i] != '\0'; i++) {
         while (buffer[i] != ':' && buffer[i+1] != '\0')
             i++;
@@ -46,7 +49,10 @@ FD_P * new_pipes(int process) {
     return pipes;
 }
 
-void parallel_emotional_color(const char * buffer, int * emotional_color, int size) {
+void parallel_emotional_color(void (*par)(void), const char * buffer, int * emotional_color, int size) {
+    if (par == NULL || buffer == NULL)
+        exit(EXIT_FAILURE);
+
     size_t process = sysconf(_SC_NPROCESSORS_ONLN);
     if (process < 0) {
         printf("Забрал всю память");
@@ -69,7 +75,7 @@ void parallel_emotional_color(const char * buffer, int * emotional_color, int si
             size_t start = i * part;
             size_t end =  i < process - 1 ? (start + part) : FILESIZE;
             int sum = 0;
-            count_smile(buffer, start, end, &sum);
+            count_smile(par, buffer, start, end, &sum);
 
             write(pipes->fd[i][1], &sum, sizeof(sum));
             exit(EXIT_SUCCESS);
