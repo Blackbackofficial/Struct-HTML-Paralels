@@ -51,7 +51,7 @@ TEST(PARALLEL_ALGO, p_like) {
     size_t start = 0;
     size_t end = 8;
     int sum = 0;
-    count_smile((void (*)()) count_smile, buffer, start, end, &sum);
+    count_smile(buffer, start, end, &sum);
     ASSERT_EQ(sum, 4);
 }
 
@@ -61,7 +61,7 @@ TEST(PARALLEL_ALGO, p_dislike) {
     size_t start = 0;
     size_t end = 8;
     int sum = 0;
-    count_smile((void (*)()) count_smile, buffer, start, end, &sum);
+    count_smile(buffer, start, end, &sum);
     ASSERT_EQ(sum, -4);
 }
 
@@ -71,7 +71,7 @@ TEST(PARALLEL_ALGO, p_like_rage) {
     size_t start = 3;
     size_t end = 8;
     int sum = 0;
-    count_smile((void (*)()) count_smile, buffer, start, end, &sum);
+    count_smile(buffer, start, end, &sum);
     ASSERT_EQ(sum, 2);
 }
 
@@ -81,6 +81,15 @@ TEST(PARALLEL_ALGO, p_dislike_color) {
     const char buffer[17] = ":(:(:(:(:(:(:(:(";
     parallel_emotional_color((void (*)()) parallel_emotional_color, buffer, &emotional_color, 17);
     ASSERT_EQ(emotional_color, NEGATIVE);
+}
+
+// считываение библиотеки проверка на пустоту
+TEST(PARALLEL_ALGO, p_null_void) {
+    int emotional_color = 0;
+    const char buffer[17] = ":(:(:(:(:(:(:(:(";
+    void (*pre)() = nullptr;
+    parallel_emotional_color(pre, buffer, &emotional_color, 17);
+    ASSERT_EQ(emotional_color, 0);
 }
 
 // подсчет положительной эмоциональной окраски

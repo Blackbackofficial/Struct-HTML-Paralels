@@ -47,17 +47,17 @@ int main() {
 
     // распараллеленная реализация c динамической библиотекой
     void * handle;
-    handle = dlopen ("libDinlib_algo.so", RTLD_LAZY);
+    handle = dlopen ("libDinlib_algo.dylib", RTLD_LAZY);
     if (!handle) {
         fputs(dlerror(), stderr);
         exit(EXIT_FAILURE);
     }
 
-    void (*parallel)(void (*par)(void), const char * buffer, int * emotional_color, int size);
+    void (*parallel)(void (*par) (), const char * buffer, int * emotional_color, int size);
     parallel = dlsym(handle, "parallel_emotional_color");
 
     begin = clock();
-    parallel((void (*)(void)) parallel_emotional_color, buffer, &color_p, FILESIZE);
+    parallel((void (*)) parallel_emotional_color, buffer, &color_p, FILESIZE);
     end = clock();
     time_spent = (double) (end - begin) / CLOCKS_PER_SEC;
     printf("Parallel algorithm time: %f\n", time_spent);

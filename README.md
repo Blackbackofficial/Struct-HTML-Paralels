@@ -9,11 +9,11 @@
 
 #### Итог: #### 
 
-В 476 раз быстрее при паралельной реализации (mac 2017 2,3 GHz 2‑ядерный Intel Core i5)
+В 476 раз быстрее при паралельной реализации (Mac 2017 2,3 GHz 2‑ядерный Intel Core i5)
 
 <pre>
-Consistent algorithm time: 0.566633
-Parallel algorithm time: 0.001190
+Consistent algorithm time: 0.556757
+Parallel algorithm time: 0.001069
 Emotional color positive
 </pre>
 
