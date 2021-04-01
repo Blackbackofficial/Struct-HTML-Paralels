@@ -28,6 +28,10 @@ int main() {
         exit(0);
     }
     char * buffer = (char *) calloc(FILESIZE, sizeof(char));
+    if (buffer == NULL) {
+        printf("Buffer is null");
+        exit(EXIT_FAILURE);
+    }
     fgets(buffer, FILESIZE, mf);
     fclose(mf);
 
@@ -55,7 +59,6 @@ int main() {
     end = clock();
     time_spent = (double) (end - begin) / CLOCKS_PER_SEC;
     printf("Parallel algorithm time: %f\n", time_spent);
-
 
     if (color_t == color_p) printf("Emotional color %s\n", color_t == POSITIVE ? "positive" : (color_t == NEGATIVE  ? "negative" : "neutral"));
     else printf("The emotional coloring of algorithms is different");

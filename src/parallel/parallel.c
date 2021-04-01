@@ -38,6 +38,8 @@ FD_P * new_pipes(int process) {
     for (int i = 0; i < process; ++i) {
         int count = -1;
         pipes->fd[i] = (int *) malloc(2 * sizeof(int *));
+        if (pipes->fd[i] == NULL)
+            return NULL;
 
         count = pipes->fd[i] == NULL ? i : (pipe(pipes->fd[i]) != 0 ? process : count);
         if (pipes != NULL && count > 0) // если не создались
