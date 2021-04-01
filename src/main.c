@@ -54,12 +54,14 @@ int main() {
     void (*parallel)(void (*par) (), const char * buffer, int * emotional_color, int size);
     parallel = dlsym(handle, "parallel_emotional_color");
 
-    begin = clock();
-    parallel((void (*)) parallel_emotional_color, buffer, &color_p, FILESIZE);
-    end = clock();
-    time_spent = (double) (end - begin) / CLOCKS_PER_SEC;
+    for (int i = 0; i < AVERAGED_SIZE; ++i) {
+        begin = clock();
+        parallel((void (*)) parallel_emotional_color, buffer, &color_p, FILESIZE);
+        end = clock();
+        time_spent += (double) (end - begin) / CLOCKS_PER_SEC;
+    }
+    time_spent = time_spent / AVERAGED_SIZE;
     printf("Parallel algorithm time: %f\n", time_spent);
-
     if (color_t == color_p) printf("Emotional color %s\n", color_t == POSITIVE ? "positive" : (color_t == NEGATIVE  ? "negative" : "neutral"));
     else printf("The emotional coloring of algorithms is different");
 
