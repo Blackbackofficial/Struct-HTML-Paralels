@@ -13,7 +13,8 @@ void count_smile(const char * buffer, size_t start, size_t end, int * sum) {
 
 FD_P * del_new_description(FD_P * pipes, int count) {
     for (int i = 0; i < count; ++i) {
-        close(*pipes->fd[i]);
+        close(pipes->fd[i][0]);
+        close(pipes->fd[i][0]);
         free(pipes->fd[i]);
     }
     if (pipes != NULL) free(pipes->fd);
@@ -37,7 +38,7 @@ FD_P * new_pipes(int process) {
 
     for (int i = 0; i < process; ++i) {
         int count = -1;
-        pipes->fd[i] = (int *) malloc(2 * sizeof(int *));
+        pipes->fd[i] = malloc(2 * sizeof(int *));
         if (pipes->fd[i] == NULL)
             return NULL;
 
