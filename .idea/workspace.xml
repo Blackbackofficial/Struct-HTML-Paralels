@@ -10,15 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="337c8d2a-ace5-4f55-9bd7-2a976a0e7210" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hw1/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hw1/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hw1/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hw1/src/html.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hw1/src/html.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hw1/src/main.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hw1/src/test_html.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gtests/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gtests/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gtests/test_algo.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configure_cppcheck.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configure_test.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/install_gtest.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/html.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/html.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/html.h" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/html.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/parallel/parallel.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/parallel/parallel.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/parallel/parallel.h" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/parallel/parallel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/test_html.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/test_html.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/trivial/trivial.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/trivial/trivial.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw1/src/trivial/trivial.h" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/trivial/trivial.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +195,7 @@
       <workItem from="1617375409062" duration="1338000" />
       <workItem from="1617744105880" duration="22000" />
       <workItem from="1617889596873" duration="150000" />
-      <workItem from="1619090866565" duration="615000" />
+      <workItem from="1619090866565" duration="862000" />
     </task>
     <servers />
   </component>

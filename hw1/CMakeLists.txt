@@ -2,29 +2,35 @@ cmake_minimum_required(VERSION 3.8)
 project(DZ1)
 
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "--coverage")
-set(CMAKE_C_FLAGS "--coverage")
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++0x -Wall -Wextra -Werror --pedantic")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage -fprofile-arcs")
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${EXTRA_BINCFLAGS})
+
+
+include(configure_test.cmake)
+add_subdirectory(Gtests)
+include(configure_cppcheck.cmake)
 
 include_directories(src)
+set(libtest_algo_sources
+        ${PROJECT_SOURCE_DIR}/src/parallel/parallel.h
+        ${PROJECT_SOURCE_DIR}/src/parallel/parallel.c
+        ${PROJECT_SOURCE_DIR}/src/trivial/trivial.h
+        ${PROJECT_SOURCE_DIR}/src/trivial/trivial.c
+        ${PROJECT_SOURCE_DIR}/src/main.c
+        )
 
-set(LIB_SOURCE_FILES src/html.c src/test_html.cpp)
+include_directories("${PROJECT_SOURCE_DIR}/src/trivial")
+include_directories("${PROJECT_SOURCE_DIR}/src/parallel")
 
-add_library(url_parse_std_lib STATIC ${LIB_SOURCE_FILES})
+add_library(libtest_algo STATIC ${libtest_algo_sources})
+add_library(Dinlib_algo SHARED ${libtest_algo_sources})
 
-# sets GTEST_INCLUDE_DIRS and GTEST_LIBRARIES
-enable_testing()
-find_package(GTest REQUIRED)
-# adds the gtest include directory
-include_directories(${GTEST_INCLUDE_DIRS})
+set(main_sources
+        ${PROJECT_SOURCE_DIR}/src/main.c
+        ${PROJECT_SOURCE_DIR}/src/trivial/trivial.h
+        ${PROJECT_SOURCE_DIR}/src/parallel/parallel.h
+        )
 
-# html tag
-add_executable(test_html.out src/test_html.cpp)
-target_link_libraries(test_html.out url_parse_std_lib)
-# links gtest
-target_link_libraries(test_html.out ${GTEST_LIBRARIES})
-target_link_libraries(test_html.out pthread)
-
-add_test(test_html.out test_html.out)
+add_executable(main ${main_sources})
+target_link_libraries(main ${CMAKE_DL_LIBS} Dinlib_algo)
