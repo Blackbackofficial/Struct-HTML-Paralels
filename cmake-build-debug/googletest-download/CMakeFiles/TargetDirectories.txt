@@ -1,3 +1,0 @@
-/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/googletest-download/CMakeFiles/rebuild_cache.dir
-/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/googletest-download/CMakeFiles/edit_cache.dir
-/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/googletest-download/CMakeFiles/googletest.dir
