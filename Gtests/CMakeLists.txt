@@ -20,6 +20,6 @@ foreach (file ${tests})
             )
     add_test(NAME ${name}
             COMMAND "${name}_tests"
-            WORKING_DIRECTORY ../..
+            WORKING_DIRECTORY ..
             )
 endforeach ()
