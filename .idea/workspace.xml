@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="DZ1" targetName="ExperimentalMemCheck" />
+      <config projectName="DZ1" targetName="Experimental" />
+      <config projectName="DZ1" targetName="Nightly" />
+      <config projectName="DZ1" targetName="ExperimentalCoverage" />
+      <config projectName="DZ1" targetName="NightlyUpdate" />
+      <config projectName="DZ1" targetName="gmock" />
+      <config projectName="DZ1" targetName="check" />
+      <config projectName="DZ1" targetName="ExperimentalUpdate" />
+      <config projectName="DZ1" targetName="NightlyBuild" />
+      <config projectName="DZ1" targetName="Dinlib_algo" />
+      <config projectName="DZ1" targetName="NightlyConfigure" />
+      <config projectName="DZ1" targetName="test_algo_tests" />
+      <config projectName="DZ1" targetName="ContinuousBuild" />
+      <config projectName="DZ1" targetName="NightlySubmit" />
+      <config projectName="DZ1" targetName="gtest_main" />
+      <config projectName="DZ1" targetName="ExperimentalTest" />
+      <config projectName="DZ1" targetName="libtest_algo" />
+      <config projectName="DZ1" targetName="NightlyTest" />
+      <config projectName="DZ1" targetName="ExperimentalSubmit" />
+      <config projectName="DZ1" targetName="ContinuousCoverage" />
+      <config projectName="DZ1" targetName="ExperimentalBuild" />
+      <config projectName="DZ1" targetName="NightlyMemCheck" />
+      <config projectName="DZ1" targetName="ExperimentalConfigure" />
+      <config projectName="DZ1" targetName="ContinuousUpdate" />
+      <config projectName="DZ1" targetName="ExperimentalStart" />
+      <config projectName="DZ1" targetName="ContinuousMemCheck" />
+      <config projectName="DZ1" targetName="main" />
+      <config projectName="DZ1" targetName="NightlyStart" />
+      <config projectName="DZ1" targetName="gmock_main" />
+      <config projectName="DZ1" targetName="ContinuousConfigure" />
+      <config projectName="DZ1" targetName="cppcheck" />
+      <config projectName="DZ1" targetName="ContinuousSubmit" />
+      <config projectName="DZ1" targetName="NightlyMemoryCheck" />
+      <config projectName="DZ1" targetName="Continuous" />
+      <config projectName="DZ1" targetName="ContinuousStart" />
+      <config projectName="DZ1" targetName="ContinuousTest" />
+      <config projectName="DZ1" targetName="NightlyCoverage" />
+      <config projectName="DZ1" targetName="gtest" />
+    </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -9,25 +48,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="337c8d2a-ace5-4f55-9bd7-2a976a0e7210" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Gtests/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gtests/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gtests/test_algo.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configure_cppcheck.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configure_test.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/install_gtest.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/html.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/html.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/html.h" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/html.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/parallel/parallel.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/parallel/parallel.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/parallel/parallel.h" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/parallel/parallel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/test_html.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/test_html.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/trivial/trivial.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/trivial/trivial.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/src/trivial/trivial.h" beforeDir="false" afterPath="$PROJECT_DIR$/hw1/src/trivial/trivial.h" afterDir="false" />
-    </list>
+    <list default="true" id="337c8d2a-ace5-4f55-9bd7-2a976a0e7210" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +58,7 @@
     <option name="clangTidyViaClangd" value="false" />
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -86,11 +108,11 @@
       <recent name="$PROJECT_DIR$/Gtests" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hw1" />
       <recent name="$PROJECT_DIR$/cmake-build-debug" />
       <recent name="$PROJECT_DIR$/Gtests" />
       <recent name="$PROJECT_DIR$/src/travial" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Google Test.Trivial_algo">
@@ -195,7 +217,7 @@
       <workItem from="1617375409062" duration="1338000" />
       <workItem from="1617744105880" duration="22000" />
       <workItem from="1617889596873" duration="150000" />
-      <workItem from="1619090866565" duration="862000" />
+      <workItem from="1619090866565" duration="1200000" />
     </task>
     <servers />
   </component>
