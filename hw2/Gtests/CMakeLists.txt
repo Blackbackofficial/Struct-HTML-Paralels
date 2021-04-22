@@ -1,8 +1,8 @@
-include_directories("${PROJECT_SOURCE_DIR}/src/trivial")
-include_directories("${PROJECT_SOURCE_DIR}/src/parallel")
+include_directories("../src/trivial")
+include_directories("../src/parallel")
 
-file(GLOB tests "${PROJECT_SOURCE_DIR}/Gtests/*.cpp")
-list(REMOVE_ITEM tests "${PROJECT_SOURCE_DIR}/Gtests/main.cpp")
+file(GLOB tests "*.cpp")
+list(REMOVE_ITEM tests "main.cpp")
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage -fprofile-arcs")
@@ -12,7 +12,7 @@ foreach (file ${tests})
     get_filename_component(name ${file} NAME_WE)
     add_executable("${name}_tests"
             ${file}
-            "${PROJECT_SOURCE_DIR}/Gtests/main.cpp"
+            "main.cpp"
             )
     target_link_libraries("${name}_tests"
             libtest_algo
@@ -20,6 +20,6 @@ foreach (file ${tests})
             )
     add_test(NAME ${name}
             COMMAND "${name}_tests"
-            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+            WORKING_DIRECTORY ../..
             )
 endforeach ()
