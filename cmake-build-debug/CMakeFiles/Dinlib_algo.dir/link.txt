@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -dynamiclib -Wl,-headerpad_max_install_names -o libDinlib_algo.dylib -install_name @rpath/libDinlib_algo.dylib CMakeFiles/Dinlib_algo.dir/src/parallel/parallel.c.o CMakeFiles/Dinlib_algo.dir/src/trivial/trivial.c.o CMakeFiles/Dinlib_algo.dir/src/main.c.o 

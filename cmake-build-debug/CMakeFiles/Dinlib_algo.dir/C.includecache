@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/trivial/trivial.h
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+
+/Users/ivanchernov/CLionProjects/DZ1/src/main.c
+dlfcn.h
+-
+trivial/trivial.h
+/Users/ivanchernov/CLionProjects/DZ1/src/trivial/trivial.h
+parallel/parallel.h
+/Users/ivanchernov/CLionProjects/DZ1/src/parallel/parallel.h
+
+/Users/ivanchernov/CLionProjects/DZ1/src/parallel/parallel.h
+unistd.h
+-
+trivial.h
+/Users/ivanchernov/CLionProjects/DZ1/src/parallel/trivial.h
+
+/Users/ivanchernov/CLionProjects/DZ1/src/trivial/trivial.h
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+

@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc liblibtest_algo.a CMakeFiles/libtest_algo.dir/src/parallel/parallel.c.o CMakeFiles/libtest_algo.dir/src/trivial/trivial.c.o CMakeFiles/libtest_algo.dir/src/main.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib liblibtest_algo.a

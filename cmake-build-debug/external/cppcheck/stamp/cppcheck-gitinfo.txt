@@ -1,0 +1,3 @@
+repository='https://github.com/danmar/cppcheck.git'
+module=''
+tag='origin'

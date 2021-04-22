@@ -1,0 +1,13 @@
+# Target labels
+ cppcheck
+# Source files and their labels
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/cppcheck
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/cppcheck.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/CMakeFiles/cppcheck-complete.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/external/cppcheck/stamp/cppcheck-install.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/external/cppcheck/stamp/cppcheck-mkdir.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/external/cppcheck/stamp/cppcheck-download.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/external/cppcheck/stamp/cppcheck-update.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/external/cppcheck/stamp/cppcheck-patch.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/external/cppcheck/stamp/cppcheck-configure.rule
+/Users/ivanchernov/CLionProjects/DZ1/cmake-build-debug/external/cppcheck/stamp/cppcheck-build.rule
